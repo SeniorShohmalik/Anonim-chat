@@ -28,13 +28,14 @@ async def salom(message,state:FSMContext):
     await Translate.tekst.set()
 @dp.message_handler(state=Translate.tekst)
 async def salom(message,state:FSMContext):
-    if int(message.text)>0:
-        iD=int(message.text)
-        await state.update_data({'ID':iD})
-        await message.answer('Do`stingizga yubormoqchi bo`lgan xabaringizni kiriting:🔛🔜')
-        await Translate.id.set()
-    else:
-        await message.answer('ID ni xato kiritdingiz')
+    try:
+        if int(message.text)>0:
+            iD=int(message.text)
+            await state.update_data({'ID':iD})
+            await message.answer('Do`stingizga yubormoqchi bo`lgan xabaringizni kiriting:🔛🔜')
+            await Translate.id.set()
+    except:
+        await message.answer('ID ni xato kiritdingiz❗️❗️')
 @dp.message_handler(state=Translate.id)
 async def ff(message,state:FSMContext):
     if len(message.text)>0:

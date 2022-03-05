@@ -56,6 +56,7 @@ async def ff(message,state:FSMContext):
         except:
             await message.answer('Afsus do`stingizda ushbu bot mavjud emas😔😑')
             await state.finish()
+            await message.answer('Bosh menudasiz',reply_markup=menu)
     elif message.text=='Yo\'q❌':
         await state.finish()
         await message.answer('Bosh menudasiz❗️',reply_markup=menu)
